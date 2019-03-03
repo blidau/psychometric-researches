@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html prefix="dc: http://purl.org/dc/terms/ og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# cc: http://creativecommons.org/ns#" lang="en-AU">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link href="https://fonts.googleapis.com/css?family=Goudy+Bookletter+1911" rel="stylesheet" />
+    <title>Psychometric Researches</title>
+
+    <link rel="icon" sizes="192x192" href="./images/icon-192x192.png" />
+    <link rel="shortcut icon" type="image/x-icon" href="./images/favicon.ico" />
+
+    <meta name="description" content="" />
+    <link rel="canonical" href="https://poetry.thecodeofthings.com/psychometric-researches/working/" />
+
+    <!-- Twitter Card -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:title" content="Psychometric Researches" />
+    <meta property="twitter:description" content="" />
+    <meta property="twitter:image" content="https://poetry.thecodeofthings.com/psychometric-researches/working/images/psychometric-researches.png" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Psychometric Researches" />
+    <meta property="og:image" content="https://poetry.thecodeofthings.com/psychometric-researches/working/images/psychometric-researches.png" />
+    <meta property="og:url" content="https://poetry.thecodeofthings.com/psychometric-researches/working/" />
+    <meta property="og:description" content="" />
+
+    <!-- Dublin Core -->
+    <meta property="dc:title" content="Psychometric Researches" />
+    <meta property="dc:description" content="" />
+    <meta property="dc:identifier" content="https://poetry.thecodeofthings.com/psychometric-researches/working/" />
+    <meta property="dc:creator" content="Benjamin Laird" />
+    <meta property="dc:publisher" content="Red Room Poetry" />
+    <link rel="dc:type" href="http://purl.org/dc/dcmitype/InteractiveResource" />
+
+    <style>
+      body { font-family: 'Goudy Bookletter 1911', serif; height: 100%; width: 100%; padding: 0; margin: 0; overflow: hidden; }
+      header { height: 40px; background-color: #000; z-index: 10; position: absolute; top: 0; left: 0; width: 100%; transition: top 1s; box-sizing: border-box; user-select: none; }
+      h1 { font-family: 'Goudy Bookletter 1911', serif; color: #FFF; text-align: center; padding: 10px 0 0; margin: 0; vertical-align: middle; line-height: 20px; font-weight: normal; -webkit-font-smoothing: subpixel-antialiased; cursor: default; }
+      div#memories { z-index: 0; height: 100%; width: 100%; padding: 0; margin: 0; background: url('./images/introduction.png'); background-repeat: repeat-y; background-position: center top; background-size: cover; position: absolute; top: 0px; left: 0px; box-sizing: border-box; overflow: hidden; }
+      #controls-tab { position: absolute; width: 40px; height: 10px; background-color: #444; bottom: 40px; right: 70px; overflow: hidden; border-radius: 5px 5px 0 0; transition: bottom 1s, height 1s, opacity 1s; opacity: 0.6; }
+      #controls-tab:hover { height: 25px; opacity: 1; }
+      #controls-switch { padding: 0; display: block; height: 25px; width: 40px; cursor: pointer; }
+      #controls-switch img { width: 30px; height: auto; padding: 5px; }
+      .without-controls header { top: -40px; }
+      .without-controls menu { bottom: -40px; }
+      .without-controls #controls-tab { bottom: 0; }
+      menu { height: 40px; background-color: #000; position: absolute; display: block; bottom: 0; margin: 0; left: 0; width: 100%; transition: bottom 1s; box-sizing: border-box; list-style-type: none; padding: 0; margin: 0; }
+      menu li { padding: 0; margin: 0; }
+      #about,
+      #fullscreen,
+      #rotate-x,
+      #rotate-y,
+      #share,
+      #close-share-modal,
+      #close-about-modal { cursor: pointer; position: absolute; }
+      button img { height: 25px; width: auto; border: none; }
+      button::-moz-focus-inner { /* remove extra padding from Firefox */ padding: 0; border: 0; }
+      #about { right: 235px; top: 5px; height: 25px; width: 25px; border: 2px solid #FFF; box-sizing: border-box; font-family: 'Goudy Bookletter 1911', serif; text-align: center; border-radius: 50%; font-size: 1.4em; line-height: 0.8em; vertical-align: top; }
+      #about abbr { text-decoration: none; -webkit-font-smoothing: subpixel-antialiased; }
+      #share { right: 195px; top: 5px; }
+      #rotate-x { right: 155px; top: 5px; }
+      #rotate-y { right: 115px; top: 5px; }
+      #fullscreen { right: 75px; top: 5px; }
+      button { padding: 1px; margin: 0; border: none; background-color: transparent; color: #FFF; display: block; height: 25px; min-width: 25px; text-align: center; box-sizing: content-box; }
+      button:focus { outline: none; }
+      button:hover, 
+      button:active { outline: none; opacity:0.5; } 
+      a:link, a:visited { color:#000; }
+      .modal-screen { position: absolute; z-index: 50; background-color: #000; width: 100%; height: 100%; opacity: 0.5; }
+      .modal-panel { position: absolute; z-index: 100; width: 420px; height: 230px; background-color: #EEE; color: #000; top: 50%; transform: translateY(-50%); margin-left: auto; margin-right: auto; left: 0; right: 0; border: 10px solid #000; border-radius: 5px; overflow: hidden; }
+      .modal-panel h2 { background-color: #000; color: #FFF; font-family: 'Goudy Bookletter 1911', serif; margin: 0; padding: 0 0 5px 0; line-height: 1em; font-weight: normal; }
+      .modal-panel h3 { font-family: 'Goudy Bookletter 1911', serif; margin: 10px 0 5px 10px; padding: 0; font-weight: normal; }
+      .modal-panel p { font-family: 'Goudy Bookletter 1911', serif; margin: 10px; text-align: justify; }
+      .modal-panel img.cover { width: 80px; height: auto; float: left; margin: 4px 8px 0 0; }
+      .modal-panel input { border: 1px solid #666; width: 400px; font-family: sans-serif; font-size: 0.8em; margin: 0 0 0 10px; padding: 3px; box-sizing: border-box; }
+      .modal-panel textarea { resize: none; overflow: hidden; border: 1px solid #666; width: 400px; height: 53px; font-family: sans-serif; font-size: 0.8em; margin: 0 0 0 10px; padding: 3px; box-sizing: border-box; }
+      #share-modal,
+      #about-modal { display: none; }
+      .show-share-modal #share-modal { display: block; }
+      .show-about-modal #about-modal { display: block; }
+      #close-share-modal,
+      #close-about-modal { right: 0; top: 0; }
+      #close-share-modal img,
+      #close-about-modal img { height: 20px; width: auto; }
+      .cube-outline { width: 180px; height: 180px; position: absolute; perspective: 900px; user-select: none; }
+      .cube { position: relative; -webkit-transform-style: preserve-3d; transform-style: preserve-3d; width: 180px; height: 180px; }
+      .face { position: absolute; width: 180px; height: 180px; -webkit-backface-visibility: hidden; backface-visibility: hidden; }
+      .line { text-align: justify; height: 22.5px; line-height: 22.5px; font-size: 20px; padding: 0 3px; }
+      .line:after { content: ''; display: inline-block; width: 100%; }
+      .face-1 { transform: rotateY(  0deg) translateZ(90px); }
+      .face-2 { transform: rotateY( 90deg) translateZ(90px); }
+      .face-3 { transform: rotateY(-90deg) rotateZ(-90deg) translateZ(90px); }
+      .face-4 { transform: rotateX( 90deg) translateZ(90px); }
+      .face-5 { transform: rotateY(180deg) rotateZ(90deg) translateZ(90px); }
+      .face-6 { transform: rotateX(-90deg) rotateZ(-90deg) translateZ(90px); }
+      @media screen and (max-width: 440px) {
+        .modal-panel { position:absolute; z-index: 100; width:100%; height:270px; box-sizing: border-box; }
+        .modal-panel input, .modal-panel textarea { width:95%; box-sizing: border-box; }
+      }
+    </style>
+</head>
+<body>
+    <header id="header"><h1>Psychometric Researches</h1></header>
+    <div id="memories"></div>
+    <div id="controls-tab"><button type="button" id="controls-switch"><img alt="Hide controls" title="Hide controls" src="./images/down-arrow.svg" /></button></div>
+    <menu id="control-menu">
+       <li><button type="button" id="about"><abbr title="About">i</abbr></button></li>
+       <li><button type="button" id="share"><img alt="Share" title="Share" src="./images/share.svg" /></button></li>
+       <li><button type="button" id="rotate-x"><img id="x-rotation-icon" alt="Start x rotation" title="Start x rotation" src="./images/rotate-x.svg" /></button></li>
+       <li><button type="button" id="rotate-y"><img id="y-rotation-icon" alt="Start y rotation" title="Start y rotation" src="./images/rotate-y.svg" /></button></li>
+       <li><button type="button" id="fullscreen"><img id="fullscreen-icon" alt="Fullscreen" title="Go fullscreen" src="./images/fullscreen.svg" /></button></li>
+    </menu>
+    <div id="share-modal"><div class="modal-screen"></div><div class="modal-panel"><button type="button" id="close-share-modal"><img src="./images/close.svg" alt="Close share" title="Close share"></button><h2>Share</h2><h3>Link to this poem</h3><input id="chapbook-link" type="text" readonly="readonly" value="https://poetry.thecodeofthings.com/psychometric-researches/working/"><h3>Embed this poem</h3><textarea id="chapbook-embed" readonly="readonly" cols="60" rows="5">&lt;iframe src="https://poetry.thecodeofthings.com/psychometric-researches/working/" style="width:100%;height:400px;" allowfullscreen="allowfullscreen"&gt;&lt;/iframe&gt;</textarea></div></div>
+    <div id="about-modal"><div class="modal-screen"></div><div class="modal-panel"><button type="button" id="close-about-modal"><img src="./images/close.svg" alt="Close about" title="Close about"></button><h2>About</h2><h3>About <cite class="poem">Psychometric Researches</cite> by Benjamin Laird</h3><p></p></div></div>
+    <script>
+      "use strict";
+      let cubesMoving;
+      let cubeCount = 0;
+      let cubes = [];
+      let rotations = { x: false, y: false, z: false };
+      let withControls = true;
+      const cubeFaces = [
+          [
+            [
+              'hold it up toward the',
+              'light in the minds-',
+              'I, a history, a point',
+              'peeling from a cover',
+              'of a previous century',
+              'as moving between',
+              'other places, lands,',
+              'whispering the library'
+            ],
+            [
+              'night where inverted',
+              'eye of white iris',
+              'lashed by passage',
+              'stained by memories',
+              'imprinted on objects',
+              'scenes from this and',
+              'other silent worlds',
+              'of the still unseen'
+            ]
+          ],
+          [
+            [
+              'small uneven towers',
+              'in faint images as',
+              'an edition discovered',
+              'so far uncategorised',
+              'into topics for sale',
+              'like falling stones',
+              'a synchronicity of',
+              'an echo of a future'
+            ],
+            [
+              'of geological layers',
+              'in limelight slides',
+              'among a collection',
+              'for an audience view',
+              'split into lectures',
+              'on Earth’s formation,',
+              'history, of evolution,',
+              'now distantly realised'
+            ]
+          ],
+          [
+            [
+              'the smell of old books',
+              'released as they break',
+              'down on the shelves',
+              'dry wood, humidity,',
+              'cut grass and fireflies',
+              'in a house of thoughts',
+              'still finding a way',
+              'through each door'
+            ],
+            [
+              'mould upon the pages',
+              'away a vanilla scent',
+              'thin remembrances of',
+              'libraries and studies',
+              'waiting by the road',
+              'empty in its depths',
+              'to every exit reversed',
+              'a haunted conclusion'
+            ]
+          ]
+      ];
+      function inFullscreen() {
+        return document.fullscreenElement ||    // alternative standard method
+          document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement;
+      }
+      function isFullscreenEnabled() {
+        let _isFullscreenEnabled;
+        if (document.fullscreenEnabled) {
+          _isFullscreenEnabled = document.fullscreenEnabled;
+        }
+        else if(document.msFullscreenEnabled) { 
+          _isFullscreenEnabled = document.msFullscreenEnabled;
+        } 
+        else if (document.mozFullScreenEnabled) {
+          _isFullscreenEnabled = document.mozFullScreenEnabled;
+        }
+        else if (document.webkitFullscreenEnabled) {
+          _isFullscreenEnabled = document.webkitFullscreenEnabled;
+        }
+        return _isFullscreenEnabled;
+      }
+      function toggleFullscreen() {
+        if (!inFullscreen()) {
+          if (document.documentElement.requestFullscreen) {
+            document.documentElement.requestFullscreen();
+          } else if (document.documentElement.msRequestFullscreen) {
+            document.documentElement.msRequestFullscreen();
+          } else if (document.documentElement.mozRequestFullScreen) {
+            document.documentElement.mozRequestFullScreen();
+          } else if (document.documentElement.webkitRequestFullscreen) {
+            document.documentElement.webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT);
+          }
+        } else {
+          if (document.exitFullscreen) {
+            document.exitFullscreen();
+          } else if (document.msExitFullscreen) {
+            document.msExitFullscreen();
+          } else if (document.mozCancelFullScreen) {
+            document.mozCancelFullScreen();
+          } else if (document.webkitExitFullscreen) {
+            document.webkitExitFullscreen();
+          }
+        }
+      }
+      function updateWindow() {
+        let fullscreenIcon = document.getElementById('fullscreen-icon');
+        const width = window.innerWidth;
+        const height = window.innerHeight;
+        const widthRatio = width / 300;
+        const heightRatio = (height - 80) / 300;
+        const ratio = widthRatio <= heightRatio ? widthRatio : heightRatio
+        cubes.forEach(function(singleCube, index, array) {
+          const cube = document.getElementById(singleCube.id);
+          cube.style.top = '50%';
+          cube.style.left = '50%';
+          cube.style.transformOrigin = 'center';
+          cube.style.transform = 'translate(-50%, -50%) scale(' + ratio + ')';
+        });
+
+        if (!inFullscreen()) {
+          fullscreenIcon.src = './images/fullscreen.svg';
+          fullscreenIcon.alt = 'Go fullscreen';
+          fullscreenIcon.title = 'Go fullscreen';
+        } else {
+          fullscreenIcon.src = './images/exit-fullscreen.svg';
+          fullscreenIcon.alt = 'Exit fullscreen';
+          fullscreenIcon.title = 'Exit fullscreen';
+        }
+      }
+      function cubesMove() {
+        cubes.forEach(function(singleCube, index, array) {
+          const cube = document.querySelector('#' + singleCube.id + '>.cube');
+          cube.style.transform = 'translateZ(-90px) rotateX(' + singleCube.angles.x + 'deg) rotateY(' + singleCube.angles.y + 'deg) rotateZ(' + singleCube.angles.z + 'deg)';
+          Object.keys(rotations).forEach(function(key) {
+            if (rotations[key]) {
+              array[index].angles[key] += 0.1;
+              if (singleCube.angles[key] > 360) {
+                array[index].angles[key] = 0;
+              }
+            }
+          });
+        });
+      }
+      function cubesChange() {
+        cubesMoving = window.setInterval(cubesMove, 30);
+      }
+      function shuffledFaces() {
+        let shuffledCubeFaces = cubeFaces.slice();
+        let index = shuffledCubeFaces.length;
+        let value, randomIndex;
+        while(index > 0) {
+          randomIndex = Math.floor(Math.random() * index);
+          index -= 1;
+          value = shuffledCubeFaces[index];
+          shuffledCubeFaces[index] = shuffledCubeFaces[randomIndex];
+          shuffledCubeFaces[randomIndex] = value;
+        }
+        return shuffledCubeFaces;
+      }
+      function addCube(xLoc, yLoc) {
+        const cubeFacesSet = shuffledFaces();
+        const memories = document.getElementById('memories');
+        const cubeOutline = document.createElement('div');
+        cubeOutline.id = 'cube-' + cubeCount;
+        cubeOutline.className = 'cube-outline'
+        const cube = document.createElement('div');
+        cube.className = 'cube';
+        for (let i=0; i < 3; i++) {
+          const faces = cubeFacesSet[i];
+          faces.forEach(function(face, index) {
+            const cubeFace = document.createElement('div');
+            const faceNum = (i * 2) + index + 1;
+            cubeFace.className = 'face face-' + faceNum;
+            face.forEach(function(line) {
+              const faceLine = document.createElement('div');
+              faceLine.className = 'line';
+              faceLine.textContent = line;
+              cubeFace.appendChild(faceLine);
+            });
+            cube.appendChild(cubeFace);
+          });
+        }
+        cubeOutline.appendChild(cube);
+        memories.appendChild(cubeOutline);
+        cubes.push(
+          { id: cubeOutline.id, angles: {x: -45, y: -45, z: 0} }
+        )
+        cubeCount++;
+        updateWindow()
+      }
+      function toggleShareModal() {
+        document.querySelector('body').classList.toggle("show-share-modal");
+      }
+      function toggleAboutModal() {
+        document.querySelector('body').classList.toggle("show-about-modal");
+      }
+      function toggleControls() {
+        let controlsIcon = document.querySelector('#controls-switch img');
+        if (withControls) {
+          controlsIcon.src = './images/up-arrow.svg';
+          controlsIcon.alt = 'Show controls';
+          controlsIcon.title = 'Show controls';
+        } else {
+          controlsIcon.src = './images/down-arrow.svg';
+          controlsIcon.alt = 'Hide controls';
+          controlsIcon.title = 'Hide controls';
+        }
+        withControls = !withControls;
+        document.querySelector('body').classList.toggle("without-controls");
+        windowResize();
+      }
+      function toggleRotation(axis) {
+        let rotationIcon = document.getElementById(axis + '-rotation-icon');
+        rotations[axis] = !rotations[axis];
+        if (rotations[axis]) {
+          rotationIcon.src = './images/rotate-' + axis + '-pause.svg';
+          rotationIcon.alt = rotationIcon.title = 'Stop ' + axis + ' rotation';
+        } else {
+          rotationIcon.src = './images/rotate-' + axis + '.svg';
+          rotationIcon.alt = rotationIcon.title = 'Start ' + axis + ' rotation';
+        }
+      }
+      function initPsychometricResearches() {
+        const fullscreenButton = document.getElementById('fullscreen');
+        fullscreenButton.addEventListener("click", toggleFullscreen);
+        const rotateXButton = document.getElementById('rotate-x');
+        rotateXButton.addEventListener("click", function() {
+          toggleRotation('x');
+        });
+        const rotateYButton = document.getElementById('rotate-y');
+        rotateYButton.addEventListener("click", function() {
+          toggleRotation('y');
+        });
+        const shareButton = document.getElementById('share');
+        shareButton.addEventListener("click", toggleShareModal);
+        const closeShareButton = document.getElementById('close-share-modal');
+        closeShareButton.addEventListener("click", toggleShareModal);
+        const aboutButton = document.getElementById('about');
+        aboutButton.addEventListener("click", toggleAboutModal);
+        const closeAboutButton = document.getElementById('close-about-modal');
+        closeAboutButton.addEventListener("click", toggleAboutModal);
+        const controlsSwitch = document.getElementById('controls-switch');
+        controlsSwitch.addEventListener("click", toggleControls)
+        window.addEventListener('resize', updateWindow);
+        addCube();
+        updateWindow();
+      }
+      initPsychometricResearches();
+      cubesChange();
+    </script>
+</body>
+</html>
