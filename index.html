@@ -52,6 +52,7 @@
       #rotate-x,
       #rotate-y,
       #share,
+      #print,
       #close-share-modal,
       #close-about-modal { cursor: pointer; position: absolute; }
       button img { height: 25px; width: auto; border: none; }
@@ -59,9 +60,10 @@
       #about { right: 235px; top: 5px; height: 25px; width: 25px; border: 2px solid #FFF; box-sizing: border-box; font-family: 'Goudy Bookletter 1911', serif; text-align: center; border-radius: 50%; font-size: 1.4em; line-height: 0.8em; vertical-align: top; }
       #about abbr { text-decoration: none; -webkit-font-smoothing: subpixel-antialiased; }
       #share { right: 195px; top: 5px; }
-      #rotate-x { right: 155px; top: 5px; }
-      #rotate-y { right: 115px; top: 5px; }
-      #fullscreen { right: 75px; top: 5px; }
+      #print { right: 155px; top: 5px; }
+      #rotate-x { right: 115px; top: 5px; }
+      #rotate-y { right: 75px; top: 5px; }
+      #fullscreen { right: 35px; top: 5px; }
       button { padding: 1px; margin: 0; border: none; background-color: transparent; color: #FFF; display: block; height: 25px; min-width: 25px; text-align: center; box-sizing: content-box; }
       button:focus { outline: none; }
       button:hover, 
@@ -84,19 +86,67 @@
       #close-share-modal img,
       #close-about-modal img { height: 20px; width: auto; }
       .cube-outline { width: 180px; height: 180px; position: absolute; perspective: 900px; user-select: none; }
-      .cube { position: relative; -webkit-transform-style: preserve-3d; transform-style: preserve-3d; width: 180px; height: 180px; }
+      .cube { position: relative; transform-style: preserve-3d; width: 180px; height: 180px; }
       .face { position: absolute; width: 180px; height: 180px; -webkit-backface-visibility: hidden; backface-visibility: hidden; }
       .line { text-align: justify; height: 22.5px; line-height: 22.5px; font-size: 20px; padding: 0 3px; }
       .line:after { content: ''; display: inline-block; width: 100%; }
-      .face-1 { transform: rotateY(  0deg) translateZ(90px); }
-      .face-2 { transform: rotateY( 90deg) translateZ(90px); }
-      .face-3 { transform: rotateY(-90deg) rotateZ(-90deg) translateZ(90px); }
-      .face-4 { transform: rotateX( 90deg) translateZ(90px); }
-      .face-5 { transform: rotateY(180deg) rotateZ(90deg) translateZ(90px); }
-      .face-6 { transform: rotateX(-90deg) rotateZ(-90deg) translateZ(90px); }
+      /* convert to nth child? */
+      .face:nth-child(1) { transform: rotateY(  0deg) translateZ(90px); }
+      .face:nth-child(2) { transform: rotateY( 90deg) translateZ(90px); }
+      .face:nth-child(3) { transform: rotateY(-90deg) rotateZ(-90deg) translateZ(90px); }
+      .face:nth-child(4) { transform: rotateX( 90deg) translateZ(90px); }
+      .face:nth-child(5) { transform: rotateY(180deg) rotateZ(90deg) translateZ(90px); }
+      .face:nth-child(6) { transform: rotateX(-90deg) rotateZ(-90deg) translateZ(90px); }
+      .print-cube,
+      .print-face,
+      .print-tab,
+      .print-line { display: none; }
       @media screen and (max-width: 440px) {
         .modal-panel { position:absolute; z-index: 100; width:100%; height:270px; box-sizing: border-box; }
         .modal-panel input, .modal-panel textarea { width:95%; box-sizing: border-box; }
+      }
+      @media print {
+        header { background-color: transparent; position: static; height: auto; width: 100%; transition: none; box-sizing: border-box; user-select: none; }
+        div#memories { position: static; background: none; }
+        h1 { font-family: 'Goudy Bookletter 1911', serif; font-size: 20px; color: #000; text-align: left; padding: 10px 0 0; margin: 0 0 1em 0; vertical-align: middle; line-height: 16px; font-weight: normal; }
+        .cube-outline,
+        #controls-tab,
+        #control-menu { display: none; }
+        .print-cube,
+        .print-face,
+        .print-tab { display: grid; }
+        .print-line { display: block; }
+        .print-face { width: 180px; height: 180px; border: 1px solid #000; transform-origin: center; }
+        .print-tab { width: 180px; height: 180px; transform-origin: center; }
+        .print-cube {
+          grid-template-rows: repeat(4, 180px) 40px;
+          grid-template-columns: 180px 180px 180px;
+          grid-template-areas: "at a bt"
+                               "b  c  d"
+                               "ct e dt"
+                               "et f ft"
+                               ".  gt .";
+        }
+        .print-face:nth-child(1) { grid-area: a; border-top: none; transform: rotateZ( 180deg); }
+        .print-face:nth-child(3) { grid-area: b; border-top: none; transform: rotateZ( 90deg); }
+        .print-face:nth-child(5) { grid-area: c; }
+        .print-face:nth-child(7) { grid-area: d; border-left: none; }
+        .print-face:nth-child(9) { grid-area: e; border-left: none; transform: rotateZ( 90deg); }
+        .print-face:nth-child(11) { grid-area: f; border-left: none; transform: rotateZ( 90deg); }
+        .print-tab:nth-child(2) { grid-area: at; transform: rotateZ( -90deg); }
+        .print-tab:nth-child(4) { grid-area: bt; transform: rotateZ( 90deg); }
+        .print-tab:nth-child(6) { grid-area: ct; transform: rotateZ( -90deg); }
+        .print-tab:nth-child(8) { grid-area: dt; transform: rotateZ( 90deg); }
+        .print-tab:nth-child(10) { grid-area: et; transform: rotateZ( -90deg); }
+        .print-tab:nth-child(12) { grid-area: ft; transform: rotateZ( 90deg); }
+        .print-tab:nth-child(13) { grid-area: gt; height: 40px; transform: rotateZ( 180deg); }
+        #about-modal { position: static; display: block; }
+        #about-modal .modal-screen { display: none; }
+        #about-modal .modal-panel { position: static; transform: none; top: 0; width: auto; height: auto; border: none; background: none; }
+        #about-modal .modal-panel h2 { display: none; }
+        #about-modal .modal-panel h3 { padding: 0; margin: 20px 0 0; }
+        #about-modal .modal-panel p { padding: 0; margin: 0; font-size: 0.9em; line-height: 1.1em; }
+        #about-modal p a { text-decoration: none; }
       }
     </style>
 </head>
@@ -107,6 +157,7 @@
     <menu id="control-menu">
        <li><button type="button" id="about"><abbr title="About">i</abbr></button></li>
        <li><button type="button" id="share"><img alt="Share" title="Share" src="./images/share.svg" /></button></li>
+       <li><button type="button" id="print"><img alt="Print" title="Print" src="./images/print.svg" /></button></li>       
        <li><button type="button" id="rotate-x"><img id="x-rotation-icon" alt="Start x rotation" title="Start x rotation" src="./images/rotate-x.svg" /></button></li>
        <li><button type="button" id="rotate-y"><img id="y-rotation-icon" alt="Start y rotation" title="Start y rotation" src="./images/rotate-y.svg" /></button></li>
        <li><button type="button" id="fullscreen"><img id="fullscreen-icon" alt="Fullscreen" title="Go fullscreen" src="./images/fullscreen.svg" /></button></li>
@@ -236,14 +287,15 @@
         const width = window.innerWidth;
         const height = window.innerHeight;
         const widthRatio = width / 300;
-        const heightRatio = (height - 80) / 300;
-        const ratio = widthRatio <= heightRatio ? widthRatio : heightRatio
+        const heightRatio =  withControls ? (height - 80) / 300 : height / 300;
+        const ratio = widthRatio <= heightRatio ? widthRatio : heightRatio;
         cubes.forEach(function(singleCube, index, array) {
           const cube = document.getElementById(singleCube.id);
           cube.style.top = '50%';
           cube.style.left = '50%';
           cube.style.transformOrigin = 'center';
           cube.style.transform = 'translate(-50%, -50%) scale(' + ratio + ')';
+          cube.style.transition = 'transform 1s';
         });
 
         if (!inFullscreen()) {
@@ -287,6 +339,7 @@
         return shuffledCubeFaces;
       }
       function addCube(xLoc, yLoc) {
+        let printTab;
         const cubeFacesSet = shuffledFaces();
         const memories = document.getElementById('memories');
         const cubeOutline = document.createElement('div');
@@ -294,28 +347,50 @@
         cubeOutline.className = 'cube-outline'
         const cube = document.createElement('div');
         cube.className = 'cube';
+        const printCube = document.createElement('div');
+        printCube.className = 'print-cube';
         for (let i=0; i < 3; i++) {
           const faces = cubeFacesSet[i];
           faces.forEach(function(face, index) {
             const cubeFace = document.createElement('div');
-            const faceNum = (i * 2) + index + 1;
-            cubeFace.className = 'face face-' + faceNum;
+            cubeFace.className = 'face';
+            const printCubeFace = document.createElement('div');
+            printCubeFace.className = 'print-face';
+            printTab = document.createElement('img');
+            printTab.className = 'print-tab';
+            printTab.src = './images/tab.svg';
+            printTab.alt = '';
             face.forEach(function(line) {
               const faceLine = document.createElement('div');
               faceLine.className = 'line';
+              const printFaceLine = document.createElement('div');
+              printFaceLine.className = 'print-line line';
               faceLine.textContent = line;
+              printFaceLine.textContent = line;
               cubeFace.appendChild(faceLine);
+              printCubeFace.appendChild(printFaceLine);
             });
             cube.appendChild(cubeFace);
+            printCube.appendChild(printCubeFace);
+            printCube.appendChild(printTab);
           });
         }
         cubeOutline.appendChild(cube);
         memories.appendChild(cubeOutline);
+        printTab = document.createElement('img');
+        printTab.className = 'print-tab';
+        printTab.src = './images/short-tab.svg';
+        printTab.alt = '';
+        printCube.appendChild(printTab);
+        memories.appendChild(printCube)
         cubes.push(
           { id: cubeOutline.id, angles: {x: -45, y: -45, z: 0} }
         )
         cubeCount++;
         updateWindow()
+      }
+      function printCube() {
+        window.print();
       }
       function toggleShareModal() {
         document.querySelector('body').classList.toggle("show-share-modal");
@@ -325,18 +400,18 @@
       }
       function toggleControls() {
         let controlsIcon = document.querySelector('#controls-switch img');
+        withControls = !withControls;
         if (withControls) {
-          controlsIcon.src = './images/up-arrow.svg';
-          controlsIcon.alt = 'Show controls';
-          controlsIcon.title = 'Show controls';
-        } else {
           controlsIcon.src = './images/down-arrow.svg';
           controlsIcon.alt = 'Hide controls';
           controlsIcon.title = 'Hide controls';
+        } else {
+          controlsIcon.src = './images/up-arrow.svg';
+          controlsIcon.alt = 'Show controls';
+          controlsIcon.title = 'Show controls';
         }
-        withControls = !withControls;
         document.querySelector('body').classList.toggle("without-controls");
-        windowResize();
+        updateWindow();
       }
       function toggleRotation(axis) {
         let rotationIcon = document.getElementById(axis + '-rotation-icon');
@@ -360,6 +435,8 @@
         rotateYButton.addEventListener("click", function() {
           toggleRotation('y');
         });
+        const printButton = document.getElementById('print');
+        printButton.addEventListener("click", printCube);
         const shareButton = document.getElementById('share');
         shareButton.addEventListener("click", toggleShareModal);
         const closeShareButton = document.getElementById('close-share-modal');
@@ -369,7 +446,7 @@
         const closeAboutButton = document.getElementById('close-about-modal');
         closeAboutButton.addEventListener("click", toggleAboutModal);
         const controlsSwitch = document.getElementById('controls-switch');
-        controlsSwitch.addEventListener("click", toggleControls)
+        controlsSwitch.addEventListener("click", toggleControls);
         window.addEventListener('resize', updateWindow);
         addCube();
         updateWindow();
